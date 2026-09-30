@@ -1,0 +1,104 @@
+:root {
+  --bg: #12252b;
+  --card: #1b353d;
+  --ink: #eef3f2;
+  --muted: #9db4b4;
+  --gold: #f2b632;
+  --line: #2f4f58;
+  font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.5;
+}
+
+.top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1.5rem;
+  padding: 1.5rem clamp(1rem, 4vw, 3rem);
+  border-bottom: 1px solid var(--line);
+}
+
+.top h1 { margin: 0; font-size: 1.75rem; letter-spacing: 0.02em; }
+#count { margin: 0; color: var(--muted); flex: 1; }
+
+#clear-btn {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--muted);
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  font: inherit;
+  cursor: pointer;
+}
+#clear-btn:hover { border-color: var(--gold); color: var(--gold); }
+
+main { padding: 1.5rem clamp(1rem, 4vw, 3rem); }
+
+#message { color: var(--muted); }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+.card {
+  position: relative;
+  background: var(--card);
+  border: 2px solid var(--line);
+  border-radius: 6px;
+  padding: 1rem 1rem 1rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.poster {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  border-radius: 4px;
+  background: var(--line);
+  margin-bottom: 0.4rem;
+}
+
+.card h2 { margin: 0; font-size: 1.15rem; }
+.card .meta { margin: 0; color: var(--muted); font-size: 0.9rem; }
+.card .desc { margin: 0.25rem 0 0; font-size: 0.9rem; }
+
+.card.favorited {
+  border-color: var(--gold);
+  background: #223f38;
+}
+
+.star-btn {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: rgba(18, 37, 43, 0.75);
+  border: none;
+  border-radius: 50%;
+  width: 2.4rem;
+  height: 2.4rem;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--muted);
+  cursor: pointer;
+}
+.star-btn:hover { color: var(--gold); }
+.card.favorited .star-btn { color: var(--gold); }
+
+button:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .card { transition: none; }
+}
